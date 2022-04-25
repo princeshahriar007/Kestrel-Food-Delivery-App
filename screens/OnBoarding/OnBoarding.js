@@ -1,12 +1,17 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { View, Text, ImageBackground, Image, Animated } from "react-native";
 
 import { constants, images, FONTS, SIZES, COLORS } from "../../constants";
 import { TextButton } from "../../components";
 
 const OnBoarding = ({ navigation }) => {
-  const scrollX = new Animated.Value(0);
+  const scrollX = useRef(new Animated.Value(0)).current;
   const flatListRef = useRef(0);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const onViewChangeRef = useRef(({ viewableItems, changed }) =>
+    setCurrentIndex(viewableItems[0].index)
+  );
 
   const Dots = () => {
     const dotPosition = Animated.divide(scrollX, SIZES.width);
@@ -95,46 +100,58 @@ const OnBoarding = ({ navigation }) => {
           <Dots />
         </View>
         {/* Buttons */}
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            paddingHorizontal: SIZES.padding,
-            marginVertical: SIZES.padding,
-          }}
-        >
-          <TextButton
-            label="Skip"
-            buttonContainerStyle={{
-              backgroundColor: null,
+        {currentIndex < constants.onboarding_screens.length - 1 && (
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              paddingHorizontal: SIZES.padding,
+              marginVertical: SIZES.padding,
             }}
-            labelStyle={{
-              color: COLORS.darkGray2,
-            }}
-            onPress={() => navigation.replace("SignIn")}
-          />
-          <TextButton
-            label="Next"
-            buttonContainerStyle={{
-              height: 60,
-              width: 200,
-              borderRadius: SIZES.radius,
-            }}
-            onPress={() => {
-              let index = Math.ceil(Number(scrollX._value / SIZES.width));
-
-              if (index < constants.onboarding_screens.length - 1) {
-                //Scroll to the next item
+          >
+            <TextButton
+              label="Skip"
+              buttonContainerStyle={{
+                backgroundColor: null,
+              }}
+              labelStyle={{
+                color: COLORS.darkGray2,
+              }}
+              onPress={() => navigation.replace("SignIn")}
+            />
+            <TextButton
+              label="Next"
+              buttonContainerStyle={{
+                height: 60,
+                width: 200,
+                borderRadius: SIZES.radius,
+              }}
+              onPress={() => {
                 flatListRef?.current?.scrollToIndex({
-                  index: index + 1,
-                  animted: true,
+                  index: currentIndex + 1,
+                  animated: true,
                 });
-              } else {
-                navigation.replace("SignIn");
-              }
+              }}
+            />
+          </View>
+        )}
+        {currentIndex == constants.onboarding_screens.length - 1 && (
+          <View
+            style={{
+              paddingHorizontal: SIZES.padding,
+              marginVertical: SIZES.padding,
             }}
-          />
-        </View>
+          >
+            <TextButton
+              label="Let's Get Started"
+              buttonContainerStyle={{
+                height: 60,
+                borderRadius: SIZES.radius,
+              }}
+              onPress={() => navigation.replace("SignIn")}
+            />
+          </View>
+        )}
       </View>
     );
   }
@@ -160,6 +177,7 @@ const OnBoarding = ({ navigation }) => {
           [{ nativeEvent: { contentOffset: { x: scrollX } } }],
           { useNativeDriver: false }
         )}
+        onViewableItemsChanged={onViewChangeRef.current}
         keyExtractor={(item) => `${item.id}`}
         renderItem={({ item, index }) => {
           return (
