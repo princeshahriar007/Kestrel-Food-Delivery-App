@@ -15,7 +15,6 @@ const OnBoarding = () => {
           right: 0,
           alignItems: "center",
           justifyContent: "center",
-          marginTop: SIZES.padding,
         }}
       >
         <Image
@@ -27,6 +26,16 @@ const OnBoarding = () => {
           }}
         />
       </View>
+    );
+  }
+
+  function renderFooter() {
+    return (
+      <View
+        style={{
+          height: 110,
+        }}
+      ></View>
     );
   }
 
@@ -57,7 +66,7 @@ const OnBoarding = () => {
               {/* Header */}
               <View
                 style={{
-                  flex: 3,
+                  flex: 4,
                 }}
               >
                 <ImageBackground
@@ -65,7 +74,7 @@ const OnBoarding = () => {
                   style={{
                     flex: 1,
                     alignItems: "center",
-                    justifyContent: "center",
+                    justifyContent: "flex-end",
                     height: "100%",
                     width: "100%",
                   }}
@@ -114,6 +123,8 @@ const OnBoarding = () => {
           );
         }}
       />
+
+      {renderFooter()}
     </View>
   );
 };
