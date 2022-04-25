@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 import { View, Text, ImageBackground, Image, Animated } from "react-native";
 
 import { constants, images, FONTS, SIZES, COLORS } from "../../constants";
+import { TextButton } from "../../components";
 
-const OnBoarding = () => {
+const OnBoarding = ({ navigation }) => {
   const scrollX = new Animated.Value(0);
+  const flatListRef = useRef(0);
 
   const Dots = () => {
     const dotPosition = Animated.divide(scrollX, SIZES.width);
@@ -80,7 +82,7 @@ const OnBoarding = () => {
     return (
       <View
         style={{
-          height: 110,
+          height: 120,
         }}
       >
         {/* Pagination / Dots */}
@@ -93,6 +95,46 @@ const OnBoarding = () => {
           <Dots />
         </View>
         {/* Buttons */}
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            paddingHorizontal: SIZES.padding,
+            marginVertical: SIZES.padding,
+          }}
+        >
+          <TextButton
+            label="Skip"
+            buttonContainerStyle={{
+              backgroundColor: null,
+            }}
+            labelStyle={{
+              color: COLORS.darkGray2,
+            }}
+            onPress={() => navigation.replace("SignIn")}
+          />
+          <TextButton
+            label="Next"
+            buttonContainerStyle={{
+              height: 60,
+              width: 200,
+              borderRadius: SIZES.radius,
+            }}
+            onPress={() => {
+              let index = Math.ceil(Number(scrollX._value / SIZES.width));
+
+              if (index < constants.onboarding_screens.length - 1) {
+                //Scroll to the next item
+                flatListRef?.current?.scrollToIndex({
+                  index: index + 1,
+                  animted: true,
+                });
+              } else {
+                navigation.replace("SignIn");
+              }
+            }}
+          />
+        </View>
       </View>
     );
   }
@@ -107,6 +149,7 @@ const OnBoarding = () => {
       {renderHeaderLogo()}
 
       <Animated.FlatList
+        ref={flatListRef}
         horizontal
         pagingEnabled
         data={constants.onboarding_screens}
@@ -144,8 +187,8 @@ const OnBoarding = () => {
                   <Image
                     source={item.bannerImage}
                     style={{
-                      width: SIZES.width * 0.8,
-                      height: SIZES.width * 0.8,
+                      width: SIZES.width * 0.75,
+                      height: SIZES.width * 0.75,
                       marginBottom: -SIZES.padding,
                     }}
                   />
