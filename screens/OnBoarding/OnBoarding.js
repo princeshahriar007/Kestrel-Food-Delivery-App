@@ -4,6 +4,53 @@ import { View, Text, ImageBackground, Image, Animated } from "react-native";
 import { constants, images, FONTS, SIZES, COLORS } from "../../constants";
 
 const OnBoarding = () => {
+  const scrollX = new Animated.Value(0);
+
+  const Dots = () => {
+    const dotPosition = Animated.divide(scrollX, SIZES.width);
+
+    return (
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {constants.onboarding_screens.map((item, index) => {
+          const dotColor = dotPosition.interpolate({
+            inputRange: [index - 1, index, index + 1],
+            outputRange: [
+              COLORS.lightOrange,
+              COLORS.primary,
+              COLORS.lightOrange,
+            ],
+            extrapolate: "clamp",
+          });
+
+          const dotWidth = dotPosition.interpolate({
+            inputRange: [index - 1, index, index + 1],
+            outputRange: [10, 30, 10],
+            extrapolate: "clamp",
+          });
+
+          return (
+            <Animated.View
+              key={`dot-${index}`}
+              style={{
+                borderRadius: 5,
+                marginHorizontal: 6,
+                width: dotWidth,
+                height: 10,
+                backgroundColor: dotColor,
+              }}
+            />
+          );
+        })}
+      </View>
+    );
+  };
+
   function renderHeaderLogo() {
     return (
       <View
@@ -35,7 +82,18 @@ const OnBoarding = () => {
         style={{
           height: 110,
         }}
-      ></View>
+      >
+        {/* Pagination / Dots */}
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+          }}
+        >
+          <Dots />
+        </View>
+        {/* Buttons */}
+      </View>
     );
   }
 
@@ -55,6 +113,10 @@ const OnBoarding = () => {
         scrollEventThrottle={16}
         snapToAlignment="center"
         showsHorizontalScrollIndicator={false}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+          { useNativeDriver: false }
+        )}
         keyExtractor={(item) => `${item.id}`}
         renderItem={({ item, index }) => {
           return (
