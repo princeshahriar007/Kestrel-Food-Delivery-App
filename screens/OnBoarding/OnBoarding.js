@@ -19,7 +19,7 @@ const OnBoarding = () => {
         }}
       >
         <Image
-          source={images.logo_01}
+          source={images.logo_02}
           resizeMode="contain"
           style={{
             width: SIZES.width * 0.5,
@@ -38,6 +38,82 @@ const OnBoarding = () => {
       }}
     >
       {renderHeaderLogo()}
+
+      <Animated.FlatList
+        horizontal
+        pagingEnabled
+        data={constants.onboarding_screens}
+        scrollEventThrottle={16}
+        snapToAlignment="center"
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => `${item.id}`}
+        renderItem={({ item, index }) => {
+          return (
+            <View
+              style={{
+                width: SIZES.width,
+              }}
+            >
+              {/* Header */}
+              <View
+                style={{
+                  flex: 3,
+                }}
+              >
+                <ImageBackground
+                  source={item.backgroundImage}
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: "100%",
+                    width: "100%",
+                  }}
+                >
+                  <Image
+                    source={item.bannerImage}
+                    style={{
+                      width: SIZES.width * 0.8,
+                      height: SIZES.width * 0.8,
+                      marginBottom: -SIZES.padding,
+                    }}
+                  />
+                </ImageBackground>
+              </View>
+              {/* Detail */}
+              <View
+                style={{
+                  flex: 1,
+                  marginTop: 30,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  paddingHorizontal: SIZES.radius,
+                }}
+              >
+                <Text
+                  style={{
+                    ...FONTS.h1,
+                    fontSize: 25,
+                  }}
+                >
+                  {item.title}
+                </Text>
+                <Text
+                  style={{
+                    marginTop: SIZES.radius,
+                    textAlign: "center",
+                    color: COLORS.darkGray,
+                    paddingHorizontal: SIZES.padding,
+                    ...FONTS.body3,
+                  }}
+                >
+                  {item.description}
+                </Text>
+              </View>
+            </View>
+          );
+        }}
+      />
     </View>
   );
 };
