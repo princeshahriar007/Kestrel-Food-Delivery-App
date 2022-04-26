@@ -7,9 +7,9 @@ import { FONTS, SIZES, COLORS, icons } from "../../constants";
 import { FormInput, CustomSwitch, TextButton } from "../../components";
 
 import { utils } from "../../utils";
-import { NavigationContainer } from "@react-navigation/native";
+import { navigation } from "@react-navigation/native";
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -20,8 +20,15 @@ const SignUp = () => {
 
   const [showPass, setShowPass] = useState(false);
 
-  function isEnableSignIn() {
-    return email != "" && password != "" && emailError == "";
+  function isEnableSignUp() {
+    return (
+      email != "" &&
+      username != "" &&
+      password != "" &&
+      emailError == "" &&
+      passwordError == "" &&
+      usernameError == ""
+    );
   }
 
   return (
@@ -144,18 +151,18 @@ const SignUp = () => {
         {/* Sign Up & Sign In */}
         <TextButton
           label="Sign Up"
-          disabled={isEnableSignIn() ? false : true}
+          disabled={isEnableSignUp() ? false : true}
           buttonContainerStyle={{
             height: 55,
             alignItems: "center",
             marginTop: SIZES.padding,
             borderRadius: SIZES.radius,
-            backgroundColor: isEnableSignIn()
+            backgroundColor: isEnableSignUp()
               ? COLORS.primary
               : COLORS.transparentPrimary,
           }}
           onPress={() => {
-            NavigationContainer.navigate("Otp");
+            navigation.navigate("Otp");
           }}
         />
       </View>
