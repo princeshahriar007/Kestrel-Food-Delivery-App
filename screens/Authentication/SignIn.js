@@ -1,21 +1,10 @@
-import React from 'react';
-import {
-    View,
-    Text
-} from 'react-native';
+import React from "react";
+import { View, Text } from "react-native";
+
+import { AuthLayout } from "../";
 
 const SignIn = () => {
-    return (
-        <View
-            style={{
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center'
-            }}
-        >
-            <Text>SignIn</Text>
-        </View>
-    )
-}
+  return <AuthLayout title="Letss Sign you in"></AuthLayout>;
+};
 
 export default SignIn;
