@@ -1,11 +1,17 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
+
+import { AuthLayout } from "../";
+import { FONTS, SIZES, COLORS, icons } from "../../constants";
+
+import { FormInput, CustomSwitch, TextButton } from "../../components";
 
 const Otp = () => {
   return (
-    <View>
-      <Text>Otp</Text>
-    </View>
+    <AuthLayout
+      title="OTP Authentication"
+      subtitle="An authentication code has been sent to your email address"
+    ></AuthLayout>
   );
 };
 
