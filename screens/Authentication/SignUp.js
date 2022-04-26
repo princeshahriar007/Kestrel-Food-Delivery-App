@@ -165,6 +165,35 @@ const SignUp = ({ navigation }) => {
             navigation.navigate("Otp");
           }}
         />
+        {/* Sign In */}
+        <View
+          style={{
+            flexDirection: "row",
+            marginTop: SIZES.radius,
+            justifyContent: "center",
+          }}
+        >
+          <Text
+            style={{
+              color: COLORS.darkGray,
+              ...FONTS.body3,
+            }}
+          >
+            Already have an account?
+          </Text>
+          <TextButton
+            label="Sign In"
+            buttonContainerStyle={{
+              marginLeft: 3,
+              backgroundColor: null,
+            }}
+            labelStyle={{
+              color: COLORS.primary,
+              ...FONTS.h3,
+            }}
+            onPress={() => navigation.goBack()}
+          />
+        </View>
       </View>
       {/* Footer */}
     </AuthLayout>
