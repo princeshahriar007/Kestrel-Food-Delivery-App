@@ -170,7 +170,11 @@ const SignIn = ({ navigation }) => {
         </View>
       </View>
       {/* Footer */}
-      <View>
+      <View
+        style={{
+          marginTop: SIZES.base,
+        }}
+      >
         {/* Facebook */}
         <TextIconButton
           containerStyle={{
