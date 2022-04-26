@@ -1,11 +1,17 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
+
+import { AuthLayout } from "../";
+import { FONTS, SIZES, COLORS, icons } from "../../constants";
+
+import { FormInput, CustomSwitch, TextButton } from "../../components";
 
 const ForgotPassword = () => {
   return (
-    <View>
-      <Text>ForgotPassword</Text>
-    </View>
+    <AuthLayout
+      title="Password Recovery"
+      subtitle="Please enter your email address to recover your password"
+    ></AuthLayout>
   );
 };
 

@@ -3,7 +3,13 @@ import React from "react";
 
 import { FONTS, COLORS } from "../constants";
 
-const TextButton = ({ buttonContainerStyle, label, labelStyle, onPress }) => {
+const TextButton = ({
+  buttonContainerStyle,
+  disabled,
+  label,
+  labelStyle,
+  onPress,
+}) => {
   return (
     <TouchableOpacity
       style={{
@@ -12,6 +18,7 @@ const TextButton = ({ buttonContainerStyle, label, labelStyle, onPress }) => {
         backgroundColor: COLORS.primary,
         ...buttonContainerStyle,
       }}
+      disabled={disabled}
       onPress={onPress}
     >
       <Text

@@ -16,6 +16,10 @@ const SignIn = ({ navigation }) => {
   const [showPass, setShowPass] = useState(false);
   const [saveMe, setSaveMe] = useState(false);
 
+  function isEnableSignIn() {
+    return email != "" && password != "" && emailError == "";
+  }
+
   return (
     <AuthLayout
       title="Let's Sign you in"
@@ -117,7 +121,19 @@ const SignIn = ({ navigation }) => {
           />
         </View>
         {/* Sign In */}
-
+        <TextButton
+          label="Sign In"
+          disabled={isEnableSignIn() ? false : true}
+          buttonContainerStyle={{
+            height: 55,
+            alignItems: "center",
+            marginTop: SIZES.padding,
+            borderRadius: SIZES.radius,
+            backgroundColor: isEnableSignIn()
+              ? COLORS.primary
+              : COLORS.transparentPrimary,
+          }}
+        />
         {/* Sign Up */}
       </View>
     </AuthLayout>
