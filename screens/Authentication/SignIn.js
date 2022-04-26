@@ -135,6 +135,34 @@ const SignIn = ({ navigation }) => {
           }}
         />
         {/* Sign Up */}
+        <View
+          style={{
+            flexDirection: "row",
+            marginTop: SIZES.radius,
+            justifyContent: "center",
+          }}
+        >
+          <Text
+            style={{
+              color: COLORS.darkGray,
+              ...FONTS.body3,
+            }}
+          >
+            Don't have an account?
+          </Text>
+          <TextButton
+            label="Sign Up"
+            buttonContainerStyle={{
+              marginLeft: 3,
+              backgroundColor: null,
+            }}
+            labelStyle={{
+              color: COLORS.primary,
+              ...FONTS.h3,
+            }}
+            onPress={() => navigation.navigate("SignUp")}
+          />
+        </View>
       </View>
     </AuthLayout>
   );
