@@ -1,3 +1,4 @@
 import TextButton from "./TextButton";
+import FormInput from "./FormInput";
 
-export { TextButton };
+export { TextButton, FormInput };
