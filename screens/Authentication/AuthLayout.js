@@ -9,7 +9,7 @@ const AuthLayout = ({ title, subtitle, titleContainerStyle, children }) => {
     <ScrollView
       style={{
         flex: 1,
-        paddingVertical: SIZES.padding,
+        paddingVertical: SIZES.radius,
         backgroundColor: COLORS.white,
       }}
     >

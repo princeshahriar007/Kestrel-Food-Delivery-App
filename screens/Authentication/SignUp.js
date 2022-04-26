@@ -4,7 +4,12 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import { AuthLayout } from "../";
 import { FONTS, SIZES, COLORS, icons } from "../../constants";
 
-import { FormInput, CustomSwitch, TextButton } from "../../components";
+import {
+  FormInput,
+  CustomSwitch,
+  TextButton,
+  TextIconButton,
+} from "../../components";
 
 import { utils } from "../../utils";
 import { navigation } from "@react-navigation/native";
@@ -196,6 +201,50 @@ const SignUp = ({ navigation }) => {
         </View>
       </View>
       {/* Footer */}
+      <View
+        style={{
+          marginTop: SIZES.base,
+        }}
+      >
+        {/* Facebook */}
+        <TextIconButton
+          containerStyle={{
+            height: 50,
+            alignItems: "center",
+            borderRadius: SIZES.radius,
+            backgroundColor: COLORS.blue,
+          }}
+          icon={icons.fb}
+          iconPosition="LEFT"
+          iconStyle={{
+            tintColor: COLORS.white,
+          }}
+          label="Continue with Facebook"
+          labelStyle={{
+            marginLeft: SIZES.radius,
+            color: COLORS.white,
+          }}
+          onPress={() => console.log("FB")}
+        />
+        {/* Google */}
+        <TextIconButton
+          containerStyle={{
+            height: 50,
+            alignItems: "center",
+            borderRadius: SIZES.radius,
+            marginTop: SIZES.radius,
+            backgroundColor: COLORS.lightGray2,
+          }}
+          icon={icons.google}
+          iconPosition="LEFT"
+          label="Continue with Google"
+          labelStyle={{
+            marginLeft: SIZES.radius,
+            color: COLORS.black,
+          }}
+          onPress={() => console.log("Google")}
+        />
+      </View>
     </AuthLayout>
   );
 };
