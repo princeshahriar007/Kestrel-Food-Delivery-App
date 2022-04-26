@@ -19,7 +19,7 @@ const Otp = ({ navigation }) => {
           return prevTimer;
         }
       });
-    }, 5000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -90,6 +90,49 @@ const Otp = ({ navigation }) => {
         </View>
       </View>
       {/* Footer */}
+      <View
+        style={{
+          marginTop: SIZES.padding * 2,
+        }}
+      >
+        <TextButton
+          label="Continue"
+          buttonContainerStyle={{
+            height: 50,
+            alignItems: "center",
+            borderRadius: SIZES.radius,
+            backgroundColor: COLORS.primary,
+          }}
+          onPress={() => console.log("Continue")}
+        />
+        <View
+          style={{
+            marginTop: SIZES.padding,
+            alignItems: "center",
+          }}
+        >
+          <Text
+            style={{
+              color: COLORS.darkGray,
+              ...FONTS.body3,
+            }}
+          >
+            By signing up, you agree to our
+          </Text>
+          <TextButton
+            label="Terms & Conditions"
+            buttonContainerStyle={{
+              marginLeft: SIZES.base,
+              backgroundColor: null,
+            }}
+            labelStyle={{
+              color: COLORS.primary,
+              ...FONTS.body3,
+            }}
+            onPress={() => console.log("TnC")}
+          />
+        </View>
+      </View>
     </AuthLayout>
   );
 };
