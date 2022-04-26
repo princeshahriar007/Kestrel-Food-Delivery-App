@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text } from "react-native";
 import OTPInputView from "@twotalltotems/react-native-otp-input";
 
@@ -8,6 +8,22 @@ import { FONTS, SIZES, COLORS } from "../../constants";
 import { TextButton } from "../../components";
 
 const Otp = ({ navigation }) => {
+  const [timer, setTimer] = useState(60);
+
+  useEffect(() => {
+    let interval = setInterval(() => {
+      setTimer((prevTimer) => {
+        if (prevTimer > 0) {
+          return prevTimer - 1;
+        } else {
+          return prevTimer;
+        }
+      });
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <AuthLayout
       title="OTP Authentication"
@@ -42,6 +58,36 @@ const Otp = ({ navigation }) => {
             console.log(code);
           }}
         />
+        {/* Countdown Timer */}
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            marginTop: SIZES.padding,
+          }}
+        >
+          <Text
+            style={{
+              color: COLORS.darkGray,
+              ...FONTS.body3,
+            }}
+          >
+            Didn't receive code?
+          </Text>
+          <TextButton
+            label={`Resend (${timer}s)`}
+            disabled={timer == 0 ? false : true}
+            buttonContainerStyle={{
+              marginLeft: SIZES.base,
+              backgroundColor: null,
+            }}
+            labelStyle={{
+              color: COLORS.primary,
+              ...FONTS.h3,
+            }}
+            onPress={() => setTimer(60)}
+          />
+        </View>
       </View>
       {/* Footer */}
     </AuthLayout>
