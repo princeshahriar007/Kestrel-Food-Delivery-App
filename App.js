@@ -1,60 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from '@react-navigation/native';
-import SplashScreen from 'react-native-splash-screen'
+import { NavigationContainer } from "@react-navigation/native";
+import SplashScreen from "react-native-splash-screen";
 
 import {
-    OnBoarding,
-
-    SignIn,
-    SignUp,
-    ForgotPassword,
-    Otp
-} from './screens'
+  OnBoarding,
+  SignIn,
+  SignUp,
+  ForgotPassword,
+  Otp,
+  MainLayout,
+} from "./screens";
 
 const Stack = createStackNavigator();
 
 const App = () => {
-    
-    React.useEffect(() => {
-        SplashScreen.hide();
-    }, [])
+  const [token, setToken] = useState("rwewfsf");
 
-    return (
-        <NavigationContainer>
-            <Stack.Navigator
-                screenOptions={{
-                    headerShown: false
-                }}
-                initialRouteName={'OnBoarding'}
-            >
-                <Stack.Screen
-                    name="OnBoarding"
-                    component={OnBoarding}
-                />
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
 
-                <Stack.Screen
-                    name="SignIn"
-                    component={SignIn}
-                />
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+        initialRouteName={token == "" ? "OnBoarding" : "Home"}
+      >
+        <Stack.Screen name="OnBoarding" component={OnBoarding} />
 
-                <Stack.Screen
-                    name="SignUp"
-                    component={SignUp}
-                />
+        <Stack.Screen name="SignIn" component={SignIn} />
 
-                <Stack.Screen
-                    name="ForgotPassword"
-                    component={ForgotPassword}
-                />
+        <Stack.Screen name="SignUp" component={SignUp} />
 
-                <Stack.Screen
-                    name="Otp"
-                    component={Otp}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
-    )
-}
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
 
-export default App
+        <Stack.Screen name="Otp" component={Otp} />
+
+        <Stack.Screen name="Home" component={MainLayout} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default App;
