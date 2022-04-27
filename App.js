@@ -16,7 +16,7 @@ import CustomDrawer from "./Navigation/CustomDrawer";
 const Stack = createStackNavigator();
 
 const App = () => {
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState("fsf");
 
   useEffect(() => {
     SplashScreen.hide();
