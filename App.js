@@ -11,11 +11,12 @@ import {
   Otp,
   MainLayout,
 } from "./screens";
+import CustomDrawer from "./Navigation/CustomDrawer";
 
 const Stack = createStackNavigator();
 
 const App = () => {
-  const [token, setToken] = useState("rwewfsf");
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     SplashScreen.hide();
@@ -39,7 +40,7 @@ const App = () => {
 
         <Stack.Screen name="Otp" component={Otp} />
 
-        <Stack.Screen name="Home" component={MainLayout} />
+        <Stack.Screen name="Home" component={CustomDrawer} />
       </Stack.Navigator>
     </NavigationContainer>
   );
