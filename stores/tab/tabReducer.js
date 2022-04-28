@@ -1,10 +1,10 @@
 import * as tabActionTypes from "./tabActions";
 
-const intialState = {
+const initialState = {
   selectedTab: "",
 };
 
-const tabReducer = (state = intialState, action) => {
+const tabReducer = (state = initialState, action) => {
   switch (action.type) {
     case tabActionTypes.SET_SELECTED_TAB:
       return {

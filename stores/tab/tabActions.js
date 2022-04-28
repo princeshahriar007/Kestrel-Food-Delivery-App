@@ -7,6 +7,6 @@ export const setSelectedTabSuccess = (selectedTab) => ({
 
 export function setSelectedTab(selectedTab) {
   return (dispatch) => {
-    dispatch(setSelectedTab(selectedTab));
+    dispatch(setSelectedTabSuccess(selectedTab));
   };
 }
