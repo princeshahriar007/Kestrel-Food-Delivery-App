@@ -13,6 +13,7 @@ import MainLayout from "./Main/MainLayout";
 import CartTab from "./Main/Cart/CartTab";
 import Favourite from "./Main/Favourite/Favourite";
 import Home from "./Main/Home/Home";
+import FilterModal from "./Main/Home/FilterModal";
 import Notification from "./Main/Notification/Notification";
 import Search from "./Main/Search/Search";
 
@@ -27,6 +28,7 @@ export {
   CartTab,
   Favourite,
   Home,
+  FilterModal,
   Notification,
   Search,
 };
