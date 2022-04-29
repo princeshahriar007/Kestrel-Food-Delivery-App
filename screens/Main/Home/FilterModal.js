@@ -9,6 +9,7 @@ import {
 import React from "react";
 
 import { FONTS, SIZES, COLORS, icons, constants } from "../../../constants";
+import { IconButton } from "../../../components";
 
 const FilterModal = ({ isVisible, onClose }) => {
   const modalAnimatedValue = React.useRef(new Animated.Value(0)).current;
@@ -71,7 +72,37 @@ const FilterModal = ({ isVisible, onClose }) => {
             borderTopRightRadius: SIZES.padding,
             backgroundColor: COLORS.white,
           }}
-        ></Animated.View>
+        >
+          {/* Header */}
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Text
+              style={{
+                flex: 1,
+                ...FONTS.h3,
+                fontSize: 18,
+              }}
+            >
+              Filter Your Search
+            </Text>
+            <IconButton
+              containerStyle={{
+                borderWidth: 2,
+                borderRadius: 10,
+                borderColor: COLORS.gray2,
+              }}
+              icon={icons.cross}
+              iconStyle={{
+                tintColor: COLORS.gray2,
+              }}
+              onPress={() => setShowFilterModal(false)}
+            />
+          </View>
+        </Animated.View>
       </View>
     </Modal>
   );
