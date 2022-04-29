@@ -348,6 +348,7 @@ const MainLayout = ({
             height: Platform.OS === "ios" ? 100 : 60,
             borderTopLeftRadius: 15,
             borderTopRightRadius: 15,
+            borderBottomLeftRadius: 15,
           }}
         />
         {/* Tabs */}
@@ -359,6 +360,7 @@ const MainLayout = ({
             paddingBottom: Platform.OS === "ios" ? 10 : 0,
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
+            borderBottomLeftRadius: 20,
             backgroundColor: COLORS.white,
           }}
         >
