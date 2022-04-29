@@ -1,5 +1,14 @@
 import React from "react";
-import { View, Text } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  TextInput,
+  FlatList,
+} from "react-native";
+
+import { FONTS, SIZES, COLORS, icons, dummyData } from "../../../constants";
 
 const Notification = () => {
   return (
