@@ -278,7 +278,7 @@ const MainLayout = ({
               justifyContent: "center",
               borderRadius: SIZES.radius,
             }}
-            onPress={() => navigation.openDrawer()}
+            //onPress
           >
             <Image
               source={dummyData?.myProfile?.profile_image}
