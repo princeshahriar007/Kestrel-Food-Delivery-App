@@ -10,7 +10,7 @@ import ForgotPassword from "./Authentication/ForgotPassword";
 
 //Main
 import MainLayout from "./Main/MainLayout";
-import Cart from "./Main/Cart/CartTab";
+import CartTab from "./Main/Cart/CartTab";
 import Favourite from "./Main/Favourite/Favourite";
 import Home from "./Main/Home/Home";
 import Notification from "./Main/Notification/Notification";
@@ -24,7 +24,7 @@ export {
   Otp,
   ForgotPassword,
   MainLayout,
-  Cart,
+  CartTab,
   Favourite,
   Home,
   Notification,
