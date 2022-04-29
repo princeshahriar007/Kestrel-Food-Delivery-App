@@ -4,6 +4,7 @@ import FormInput from "./FormInput";
 import CustomSwitch from "./CustomSwitch";
 import LineDivider from "./LineDivider";
 import Header from "./Header";
+import HorizontalFoodCard from "./HorizontalFoodCard";
 
 export {
   TextButton,
@@ -12,4 +13,5 @@ export {
   CustomSwitch,
   LineDivider,
   Header,
+  HorizontalFoodCard,
 };
