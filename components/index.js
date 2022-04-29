@@ -5,6 +5,7 @@ import CustomSwitch from "./CustomSwitch";
 import LineDivider from "./LineDivider";
 import Header from "./Header";
 import HorizontalFoodCard from "./HorizontalFoodCard";
+import VerticalFoodCard from "./VerticalFoodCard";
 
 export {
   TextButton,
@@ -14,4 +15,5 @@ export {
   LineDivider,
   Header,
   HorizontalFoodCard,
+  VerticalFoodCard,
 };

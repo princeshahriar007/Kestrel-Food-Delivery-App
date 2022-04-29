@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 import { FONTS, SIZES, COLORS, icons, dummyData } from "../../../constants";
-import { HorizontalFoodCard } from "../../../components";
+import { HorizontalFoodCard, VerticalFoodCard } from "../../../components";
 
 const Section = ({ title, onPress, children }) => {
   return (
@@ -54,6 +54,7 @@ const Home = () => {
   const [selectedMenuType, setSelectedMenuType] = React.useState(1);
   const [menuList, setMenuList] = React.useState([]);
   const [recommends, setRecommends] = React.useState([]);
+  const [popular, setPopular] = React.useState([]);
 
   React.useEffect(() => {
     handleChangeCategory(selectedCategoryId, selectedMenuType);
@@ -61,10 +62,16 @@ const Home = () => {
 
   //Handler
   function handleChangeCategory(categoryId, menuTypeId) {
+    //Retrieve the popular menu
+    let selectedPopular = dummyData.menu.find((a) => a.name == "Popular");
     //Retrieve the recommended menu
     let selectedRecommend = dummyData.menu.find((a) => a.name == "Recommended");
     //Find the menu based on the menuTypeId
     let selectedMenu = dummyData.menu.find((a) => a.id == menuTypeId);
+    //Set the popular menu based on the categoryId
+    setPopular(
+      selectedPopular?.list?.filter((a) => a.categories.includes(categoryId))
+    );
     //Set the recommended menu based on the categoryId
     setRecommends(
       selectedRecommend?.list?.filter((a) => a.categories.includes(categoryId))
@@ -197,6 +204,39 @@ const Home = () => {
     );
   }
 
+  function renderPopularSection() {
+    return (
+      <Section
+        title="Popular Near You"
+        onPress={() => console.log("Show All Popular")}
+      >
+        <FlatList
+          data={popular}
+          keyExtractor={(item) => `${item.id}`}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item, index }) => (
+            <VerticalFoodCard
+              containerStyle={{
+                marginLeft: index == 0 ? SIZES.padding : 18,
+                marginRight: index == popular.length - 1 ? SIZES.padding : 0,
+                paddingRight: SIZES.radius,
+                alignItems: "center",
+              }}
+              imageStyle={{
+                marginTop: 35,
+                height: 135,
+                width: 135,
+              }}
+              item={item}
+              onPress={() => console.log("VerticalFoodCard")}
+            />
+          )}
+        />
+      </Section>
+    );
+  }
+
   return (
     <View
       style={{
@@ -215,6 +255,9 @@ const Home = () => {
         }}
         ListHeaderComponent={
           <View>
+            {/* Popular */}
+            {renderPopularSection()}
+
             {/* Recommended */}
             {renderRecommendedSection()}
 
