@@ -127,6 +127,27 @@ const FilterModal = ({ isVisible, onClose }) => {
     );
   }
 
+  function renderPricingRange() {
+    return (
+      <Section title="Pricing Range">
+        <View
+          style={{
+            alignItems: "center",
+          }}
+        >
+          <TwoPointSlider
+            values={[10, 50]}
+            min={1}
+            max={100}
+            prefix="$"
+            postfix=""
+            onValueChange={(values) => console.log(values)}
+          />
+        </View>
+      </Section>
+    );
+  }
+
   return (
     <Modal animationType="fade" transparent={true} visible={isVisible}>
       <View
@@ -201,6 +222,9 @@ const FilterModal = ({ isVisible, onClose }) => {
 
             {/* Delivery Time */}
             {renderDeliveryTime()}
+
+            {/* Pricing Range */}
+            {renderPricingRange()}
           </ScrollView>
         </Animated.View>
       </View>
