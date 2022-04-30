@@ -23,6 +23,9 @@ const TwoPointSlider = ({
       selectedStyle={{
         backgroundColor: COLORS.primary,
       }}
+      markerContainerStyle={{
+        width: 65,
+      }}
       trackStyle={{
         height: 10,
         borderRadius: 10,
@@ -53,7 +56,7 @@ const TwoPointSlider = ({
               style={{
                 marginTop: 5,
                 color: COLORS.darkGray,
-                ...FONTS.body3,
+                ...FONTS.body4,
               }}
             >
               {prefix}
