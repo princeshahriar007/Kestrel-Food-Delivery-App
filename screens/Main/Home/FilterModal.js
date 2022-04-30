@@ -5,6 +5,7 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
   Modal,
+  Platform,
 } from "react-native";
 import React from "react";
 
@@ -318,6 +319,29 @@ const FilterModal = ({ isVisible, onClose }) => {
             {/* Tags */}
             {renderTags()}
           </ScrollView>
+          {/* Apply Button */}
+          <View
+            style={{
+              position: "absolute",
+              bottom: Platform.OS === "ios" ? 150 : 110,
+              left: 0,
+              right: 0,
+              height: 110,
+              paddingHorizontal: SIZES.padding,
+              paddingVertical: SIZES.radius,
+              backgroundColor: COLORS.white,
+            }}
+          >
+            <TextButton
+              label="Apply Filters"
+              buttonContainerStyle={{
+                height: 50,
+                borderRadius: SIZES.base,
+                backgroundColor: COLORS.primary,
+              }}
+              onPress={() => console.log("Apply Filter")}
+            />
+          </View>
         </Animated.View>
       </View>
     </Modal>
