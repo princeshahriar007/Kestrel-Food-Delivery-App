@@ -1,6 +1,7 @@
 import TextButton from "./TextButton";
 import TextIconButton from "./TextIconButton";
 import IconButton from "./IconButton";
+import CartQuantityButton from "./CartQuantityButton";
 import FormInput from "./FormInput";
 import CustomSwitch from "./CustomSwitch";
 import LineDivider from "./LineDivider";
@@ -13,6 +14,7 @@ export {
   TextButton,
   TextIconButton,
   IconButton,
+  CartQuantityButton,
   FormInput,
   CustomSwitch,
   LineDivider,
