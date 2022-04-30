@@ -1,19 +1,17 @@
-import React from 'react';
-import {
-    View,
-    Text
-} from 'react-native';
+import React from "react";
+import { View, Text } from "react-native";
 
-const FoodDetail = () => {
-    return (
-        <View
-            style={{
-                flex: 1
-            }}
-        >
-            <Text>FoodDetail</Text>
-        </View>
-    )
-}
+const FoodDetail = ({ navigation, route }) => {
+  const { selectedFood } = route.params;
+  return (
+    <View
+      style={{
+        flex: 1,
+      }}
+    >
+      <Text>{JSON.stringify(selectedFood)}</Text>
+    </View>
+  );
+};
 
 export default FoodDetail;

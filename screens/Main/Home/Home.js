@@ -7,6 +7,7 @@ import {
   TextInput,
   FlatList,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { FONTS, SIZES, COLORS, icons, dummyData } from "../../../constants";
 
@@ -51,6 +52,7 @@ const Section = ({ title, onPress, children }) => {
 };
 
 const Home = () => {
+  const navigation = useNavigation();
   //State Variables
   const [selectedCategoryId, setSelectedCategoryId] = React.useState(1);
   const [selectedMenuType, setSelectedMenuType] = React.useState(1);
@@ -198,7 +200,9 @@ const Home = () => {
                 width: 135,
               }}
               item={item}
-              onPress={() => console.log("HorizontalFoodCard")}
+              onPress={() => {
+                navigation.navigate("FoodDetail", { selectedFood: item });
+              }}
             />
           )}
         />
@@ -231,7 +235,9 @@ const Home = () => {
                 width: 135,
               }}
               item={item}
-              onPress={() => console.log("VerticalFoodCard")}
+              onPress={() => {
+                navigation.navigate("FoodDetail", { selectedFood: item });
+              }}
             />
           )}
         />
@@ -387,7 +393,7 @@ const Home = () => {
               }}
               item={subItem}
               onPress={() => {
-                console.log("HorizontalFoodCard");
+                navigation.navigate("FoodDetail", { selectedFood: item });
               }}
             />
           );
