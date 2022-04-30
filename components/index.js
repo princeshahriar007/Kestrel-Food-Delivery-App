@@ -7,6 +7,7 @@ import LineDivider from "./LineDivider";
 import Header from "./Header";
 import HorizontalFoodCard from "./HorizontalFoodCard";
 import VerticalFoodCard from "./VerticalFoodCard";
+import TwoPointSlider from "./TwoPointSlider";
 
 export {
   TextButton,
@@ -18,4 +19,5 @@ export {
   Header,
   HorizontalFoodCard,
   VerticalFoodCard,
+  TwoPointSlider,
 };

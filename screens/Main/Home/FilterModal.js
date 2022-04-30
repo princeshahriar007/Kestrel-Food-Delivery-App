@@ -9,7 +9,27 @@ import {
 import React from "react";
 
 import { FONTS, SIZES, COLORS, icons, constants } from "../../../constants";
-import { IconButton } from "../../../components";
+import { IconButton, TwoPointSlider } from "../../../components";
+
+const Section = ({ containerStyle, title, children }) => {
+  return (
+    <View
+      style={{
+        marginTop: SIZES.padding,
+        ...containerStyle,
+      }}
+    >
+      <Text
+        style={{
+          ...FONTS.h3,
+        }}
+      >
+        {title}
+      </Text>
+      {children}
+    </View>
+  );
+};
 
 const FilterModal = ({ isVisible, onClose }) => {
   const modalAnimatedValue = React.useRef(new Animated.Value(0)).current;
@@ -38,6 +58,26 @@ const FilterModal = ({ isVisible, onClose }) => {
       SIZES.height > 840 ? SIZES.height - 680 : SIZES.height - 600,
     ],
   });
+
+  function renderDistance() {
+    return (
+      <Section title="Distance">
+        <View
+          style={{
+            alignItems: "center",
+          }}
+        >
+          <TwoPointSlider
+            values={[3, 10]}
+            min={1}
+            max={20}
+            postfix="km"
+            onValueChange={(values) => console.log(values)}
+          />
+        </View>
+      </Section>
+    );
+  }
 
   return (
     <Modal animationType="fade" transparent={true} visible={isVisible}>
@@ -102,6 +142,15 @@ const FilterModal = ({ isVisible, onClose }) => {
               onPress={() => setShowFilterModal(false)}
             />
           </View>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{
+              paddingBottom: 250,
+            }}
+          >
+            {/* Distance */}
+            {renderDistance()}
+          </ScrollView>
         </Animated.View>
       </View>
     </Modal>
