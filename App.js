@@ -15,7 +15,14 @@ import {
   SignUp,
   ForgotPassword,
   Otp,
-  MainLayout,
+  AddCard,
+  MyCard,
+  Checkout,
+  MyCart,
+  Success,
+  DeliveryStatus,
+  Map,
+  FoodDetail,
 } from "./screens";
 import CustomDrawer from "./Navigation/CustomDrawer";
 
