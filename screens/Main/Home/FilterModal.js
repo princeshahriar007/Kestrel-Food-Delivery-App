@@ -9,7 +9,12 @@ import {
 import React from "react";
 
 import { FONTS, SIZES, COLORS, icons, constants } from "../../../constants";
-import { IconButton, TextButton, TwoPointSlider } from "../../../components";
+import {
+  IconButton,
+  TextButton,
+  TextIconButton,
+  TwoPointSlider,
+} from "../../../components";
 
 const Section = ({ containerStyle, title, children }) => {
   return (
@@ -148,6 +153,51 @@ const FilterModal = ({ isVisible, onClose }) => {
     );
   }
 
+  function renderRatings() {
+    return (
+      <Section
+        title="Ratings"
+        containerStyle={{
+          marginTop: 40,
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          {constants.ratings.map((item, index) => {
+            return (
+              <TextIconButton
+                key={`Ratings-${index}`}
+                label={item.label}
+                labelStyle={{
+                  color: item.id == ratings ? COLORS.white : COLORS.gray,
+                }}
+                containerStyle={{
+                  flex: 1,
+                  height: 50,
+                  margin: 5,
+                  alignItems: "center",
+                  borderRadius: SIZES.base,
+                  backgroundColor:
+                    item.id == ratings ? COLORS.primary : COLORS.lightGray2,
+                }}
+                icon={icons.star}
+                iconStyle={{
+                  tintColor: item.id == ratings ? COLORS.white : COLORS.gray,
+                }}
+                iconPosition="RIGHT"
+                onPress={() => setRatings(item.id)}
+              />
+            );
+          })}
+        </View>
+      </Section>
+    );
+  }
+
   return (
     <Modal animationType="fade" transparent={true} visible={isVisible}>
       <View
@@ -225,6 +275,9 @@ const FilterModal = ({ isVisible, onClose }) => {
 
             {/* Pricing Range */}
             {renderPricingRange()}
+
+            {/* Ratings */}
+            {renderRatings()}
           </ScrollView>
         </Animated.View>
       </View>
