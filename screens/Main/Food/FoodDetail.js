@@ -357,6 +357,7 @@ const FoodDetail = ({ navigation, route }) => {
           }}
           label="Buy Now"
           label2="$15.99"
+          onPress={() => navigation.navigate("MyCart")}
         />
       </View>
     );
