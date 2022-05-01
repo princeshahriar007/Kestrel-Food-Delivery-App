@@ -15,12 +15,14 @@ import {
   IconButton,
   CartQuantityButton,
   IconLabel,
+  TextButton,
 } from "../../../components";
 
 const FoodDetail = ({ navigation, route }) => {
   const { selectedFood } = route.params;
 
   const [foodItem, setFoodItem] = React.useState(selectedFood);
+  const [selectedSize, setSelectedSize] = React.useState("");
 
   function renderHeader() {
     return (
@@ -205,6 +207,57 @@ const FoodDetail = ({ navigation, route }) => {
                 color: COLORS.black,
               }}
             />
+          </View>
+          {/* Sizes */}
+          <View
+            style={{
+              flexDirection: "row",
+              marginTop: SIZES.padding,
+              alignItems: "center",
+            }}
+          >
+            <Text
+              style={{
+                ...FONTS.h3,
+              }}
+            >
+              Sizes:
+            </Text>
+            <View
+              style={{
+                flexDirection: "row",
+                flexWrap: "wrap",
+                marginLeft: SIZES.padding,
+              }}
+            >
+              {dummyData.sizes.map((item, index) => {
+                return (
+                  <TextButton
+                    key={`Sizes-${index}`}
+                    buttonContainerStyle={{
+                      width: 55,
+                      height: 55,
+                      margin: SIZES.base,
+                      borderWidth: 1,
+                      borderRadius: SIZES.radius,
+                      borderColor:
+                        selectedSize == item.id ? COLORS.primary : COLORS.gray,
+                      backgroundColor:
+                        selectedSize == item.id ? COLORS.primary : null,
+                    }}
+                    label={item.label}
+                    labelStyle={{
+                      color:
+                        selectedSize == item.id ? COLORS.white : COLORS.gray2,
+                      ...FONTS.body2,
+                    }}
+                    onPress={() => {
+                      setSelectedSize(item.id);
+                    }}
+                  />
+                );
+              })}
+            </View>
           </View>
         </View>
       </View>
