@@ -11,6 +11,7 @@ import HorizontalFoodCard from "./HorizontalFoodCard";
 import VerticalFoodCard from "./VerticalFoodCard";
 import TwoPointSlider from "./TwoPointSlider";
 import Rating from "./Rating";
+import StepperInput from "./StepperInput";
 
 export {
   TextButton,
@@ -26,4 +27,5 @@ export {
   VerticalFoodCard,
   TwoPointSlider,
   Rating,
+  StepperInput,
 };

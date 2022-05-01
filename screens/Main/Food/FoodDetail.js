@@ -18,6 +18,7 @@ import {
   TextButton,
   LineDivider,
   Rating,
+  StepperInput,
 } from "../../../components";
 
 const FoodDetail = ({ navigation, route }) => {
@@ -25,6 +26,7 @@ const FoodDetail = ({ navigation, route }) => {
 
   const [foodItem, setFoodItem] = React.useState(selectedFood);
   const [selectedSize, setSelectedSize] = React.useState("");
+  const [qty, setQty] = React.useState(1);
 
   function renderHeader() {
     return (
@@ -321,6 +323,45 @@ const FoodDetail = ({ navigation, route }) => {
     );
   }
 
+  function renderFooter() {
+    return (
+      <View
+        style={{
+          flexDirection: "row",
+          height: Platform.OS === "ios" ? 120 : 80,
+          alignItems: "center",
+          paddingHorizontal: SIZES.padding,
+          paddingBottom: SIZES.radius,
+        }}
+      >
+        {/* Stepper Input */}
+        <StepperInput
+          value={qty}
+          onAdd={() => setQty(qty + 1)}
+          onMinus={() => {
+            if (qty > 1) {
+              setQty(qty - 1);
+            }
+          }}
+        />
+        {/* Text Button */}
+        <TextButton
+          buttonContainerStyle={{
+            flex: 1,
+            flexDirection: "row",
+            height: 60,
+            marginLeft: SIZES.radius,
+            paddingHorizontal: SIZES.radius,
+            borderRadius: SIZES.radius,
+            backgroundColor: COLORS.primary,
+          }}
+          label="Buy Now"
+          label2="$15.99"
+        />
+      </View>
+    );
+  }
+
   return (
     <View
       style={{
@@ -342,8 +383,15 @@ const FoodDetail = ({ navigation, route }) => {
         />
         {/* Restaurant */}
         {renderRestaurant()}
+        <LineDivider
+          lineStyle={{
+            height: 2,
+            backgroundColor: COLORS.lightGray2,
+          }}
+        />
       </ScrollView>
       {/* Footer */}
+      {renderFooter()}
     </View>
   );
 };
