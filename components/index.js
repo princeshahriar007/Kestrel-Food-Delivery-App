@@ -10,6 +10,7 @@ import Header from "./Header";
 import HorizontalFoodCard from "./HorizontalFoodCard";
 import VerticalFoodCard from "./VerticalFoodCard";
 import TwoPointSlider from "./TwoPointSlider";
+import Rating from "./Rating";
 
 export {
   TextButton,
@@ -24,4 +25,5 @@ export {
   HorizontalFoodCard,
   VerticalFoodCard,
   TwoPointSlider,
+  Rating,
 };

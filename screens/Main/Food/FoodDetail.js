@@ -16,6 +16,8 @@ import {
   CartQuantityButton,
   IconLabel,
   TextButton,
+  LineDivider,
+  Rating,
 } from "../../../components";
 
 const FoodDetail = ({ navigation, route }) => {
@@ -264,6 +266,61 @@ const FoodDetail = ({ navigation, route }) => {
     );
   }
 
+  function renderRestaurant() {
+    return (
+      <View
+        style={{
+          flexDirection: "row",
+          marginVertical: SIZES.padding,
+          paddingHorizontal: SIZES.padding,
+          alignItems: "center",
+        }}
+      >
+        {/* Profile Photo */}
+        <Image
+          source={images.profile}
+          style={{
+            width: 50,
+            height: 50,
+            borderRadius: SIZES.radius,
+          }}
+        />
+        {/* Info */}
+        <View
+          style={{
+            flex: 1,
+            marginLeft: SIZES.radius,
+            justifyContent: "center",
+          }}
+        >
+          <Text
+            style={{
+              ...FONTS.h3,
+            }}
+          >
+            ByProgrammers
+          </Text>
+          <Text
+            style={{
+              color: COLORS.gray,
+              ...FONTS.body4,
+            }}
+          >
+            1.2 KM away from you
+          </Text>
+        </View>
+
+        {/* Ratings */}
+        <Rating
+          rating={3.5}
+          iconStyle={{
+            marginLeft: 3,
+          }}
+        />
+      </View>
+    );
+  }
+
   return (
     <View
       style={{
@@ -277,8 +334,14 @@ const FoodDetail = ({ navigation, route }) => {
       <ScrollView>
         {/* Food Detail */}
         {renderDetail()}
-
+        <LineDivider
+          lineStyle={{
+            height: 2,
+            backgroundColor: COLORS.lightGray2,
+          }}
+        />
         {/* Restaurant */}
+        {renderRestaurant()}
       </ScrollView>
       {/* Footer */}
     </View>
