@@ -126,6 +126,32 @@ const FoodDetail = ({ navigation, route }) => {
             }}
           />
         </View>
+
+        {/* Food Info */}
+        <View
+          style={{
+            marginTop: SIZES.padding,
+          }}
+        >
+          {/* Name & Description */}
+          <Text
+            style={{
+              ...FONTS.h1,
+            }}
+          >
+            {foodItem?.name}
+          </Text>
+          <Text
+            style={{
+              marginTop: SIZES.base,
+              color: COLORS.darkGray,
+              textAlign: "justify",
+              ...FONTS.body3,
+            }}
+          >
+            {foodItem?.description}
+          </Text>
+        </View>
       </View>
     );
   }

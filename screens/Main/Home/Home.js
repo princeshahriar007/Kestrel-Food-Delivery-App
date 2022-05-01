@@ -393,7 +393,7 @@ const Home = () => {
               }}
               item={subItem}
               onPress={() => {
-                navigation.navigate("FoodDetail", { selectedFood: item });
+                navigation.navigate("FoodDetail", { selectedFood: subItem });
               }}
             />
           );
