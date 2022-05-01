@@ -1,6 +1,7 @@
 import TextButton from "./TextButton";
 import TextIconButton from "./TextIconButton";
 import IconButton from "./IconButton";
+import IconLabel from "./IconLabel";
 import CartQuantityButton from "./CartQuantityButton";
 import FormInput from "./FormInput";
 import CustomSwitch from "./CustomSwitch";
@@ -14,6 +15,7 @@ export {
   TextButton,
   TextIconButton,
   IconButton,
+  IconLabel,
   CartQuantityButton,
   FormInput,
   CustomSwitch,

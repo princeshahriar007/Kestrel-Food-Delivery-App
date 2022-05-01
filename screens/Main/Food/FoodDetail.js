@@ -10,7 +10,12 @@ import {
   dummyData,
 } from "../../../constants";
 
-import { Header, IconButton, CartQuantityButton } from "../../../components";
+import {
+  Header,
+  IconButton,
+  CartQuantityButton,
+  IconLabel,
+} from "../../../components";
 
 const FoodDetail = ({ navigation, route }) => {
   const { selectedFood } = route.params;
@@ -151,6 +156,56 @@ const FoodDetail = ({ navigation, route }) => {
           >
             {foodItem?.description}
           </Text>
+
+          {/* Ratings, Duration & Shipping */}
+          <View
+            style={{
+              flexDirection: "row",
+              marginTop: SIZES.padding,
+            }}
+          >
+            {/* Ratings */}
+            <IconLabel
+              containerStyle={{
+                backgroundColor: COLORS.primary,
+              }}
+              icon={icons.star}
+              label="4.5"
+              labelStyle={{
+                color: COLORS.white,
+              }}
+            />
+            {/* Duration */}
+            <IconLabel
+              containerStyle={{
+                marginLeft: SIZES.radius,
+                paddingHorizontal: 0,
+              }}
+              iconStyle={{
+                tintColor: COLORS.black,
+              }}
+              icon={icons.clock}
+              label="30 Mins"
+              labelStyle={{
+                color: COLORS.black,
+              }}
+            />
+            {/* Shipping */}
+            <IconLabel
+              containerStyle={{
+                marginLeft: SIZES.radius,
+                paddingHorizontal: 0,
+              }}
+              iconStyle={{
+                tintColor: COLORS.black,
+              }}
+              icon={icons.dollar}
+              label="Free Shipping"
+              labelStyle={{
+                color: COLORS.black,
+              }}
+            />
+          </View>
         </View>
       </View>
     );
