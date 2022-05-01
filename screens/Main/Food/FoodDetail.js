@@ -15,6 +15,8 @@ import { Header, IconButton, CartQuantityButton } from "../../../components";
 const FoodDetail = ({ navigation, route }) => {
   const { selectedFood } = route.params;
 
+  const [foodItem, setFoodItem] = React.useState(selectedFood);
+
   function renderHeader() {
     return (
       <Header
@@ -54,6 +56,80 @@ const FoodDetail = ({ navigation, route }) => {
     );
   }
 
+  function renderDetail() {
+    return (
+      <View
+        style={{
+          marginTop: SIZES.radius,
+          marginBottom: SIZES.padding,
+          paddingHorizontal: SIZES.padding,
+        }}
+      >
+        {/* Food Card */}
+        <View
+          style={{
+            height: 190,
+            borderRadius: 15,
+            backgroundColor: COLORS.lightGray2,
+          }}
+        >
+          {/* Calories & Favourites */}
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              marginTop: SIZES.base,
+              paddingHorizontal: SIZES.radius,
+            }}
+          >
+            {/* Calories */}
+            <View
+              style={{
+                flexDirection: "row",
+              }}
+            >
+              <Image
+                source={icons.calories}
+                style={{
+                  width: 30,
+                  height: 30,
+                }}
+              />
+
+              <Text
+                style={{
+                  color: COLORS.darkGray2,
+                  ...FONTS.body4,
+                }}
+              >
+                {foodItem?.calories} calories
+              </Text>
+            </View>
+            {/* Favourite */}
+            <Image
+              source={icons.love}
+              style={{
+                width: 20,
+                height: 20,
+                tintColor: foodItem?.isFavourite ? COLORS.primary : COLORS.gray,
+              }}
+            />
+          </View>
+          {/* Food Image */}
+
+          <Image
+            source={foodItem?.image}
+            resizeMode="contain"
+            style={{
+              width: "100%",
+              height: 170,
+            }}
+          />
+        </View>
+      </View>
+    );
+  }
+
   return (
     <View
       style={{
@@ -64,9 +140,13 @@ const FoodDetail = ({ navigation, route }) => {
       {/* Header */}
       {renderHeader()}
       {/* Body */}
+      <ScrollView>
+        {/* Food Detail */}
+        {renderDetail()}
 
+        {/* Restaurant */}
+      </ScrollView>
       {/* Footer */}
-      <Text>{JSON.stringify(selectedFood)}</Text>
     </View>
   );
 };
